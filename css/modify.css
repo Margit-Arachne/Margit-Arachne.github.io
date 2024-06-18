@@ -1,66 +1,37 @@
-#page-header,
-#page-header:before {
-  background: transparent !important;
+#web_bg {
+  /* 背景图像的地址（url括号里）  */
+  background: url(https://img.margit.asia/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240617104721.jpg);
+  /* 背景图像不重复 */
+  background-repeat: no-repeat;
+  /* 背景图像大小 */
+  background-size: cover;
 }
-#page-header.post-bg,
-#page-header.not-home-page {
-  height: 280px !important;
+/* 文章页背景 */
+.layout_post>#post {
+  /* 以下代表透明度为0.7 可以自行修改*/
+  background: rgba(255,255,255,.7);
 }
-#page-header #post-info {
-  bottom: 40px !important;
+
+/* 所有页面背景 */
+#aside_content .card-widget, #recent-posts>.recent-post-item, .layout_page>div:first-child:not(.recent-posts), .layout_post>#page, .layout_post>#post, .read-mode .layout_post>#post{
+  /* 以下代表透明度为0.7 */
+  background: rgba(255,255,255,.7);
 }
-#page-header #page-site-info {
-  top: 140px !important;
+/*侧边卡片的透明度 */
+:root {
+--card-bg: rgba(255, 255, 255, .7);
 }
-@media screen and (max-width: 768px) {
-  #page-header.not-home-page {
-    height: 200px !important;
-  }
-  #page-header #post-info {
-    bottom: 10px !important;
-  }
-  #page-header #page-site-info {
-    top: 100px !important;
-  }
+/* 页脚透明 */
+#footer {
+/* 以下代表透明度为0.7 */
+background: rgba(255,255,255, .0);
 }
-.top-img {
-  height: 100px;
-  margin: -50px -40px 50px;
-  border-top-left-radius: inherit;
-  border-top-right-radius: inherit;
-  background-position: center center;
-  background-size: cover;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  transition: all 0.3s;
+.icon img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s;
 }
-@media screen and (max-width: 768px) {
-  .top-img {
-    height: 100px;
-    margin: -36px -14px 36px;
-  }
-}
-[data-theme='dark'] .top-img {
-  filter: brightness(0.8);
-}
-#footer:before {
-  background-color: rgba(255,255,255,0.5);
-}
-[data-theme='dark'] #footer:before {
-  background-color: rgba(0,0,0,0.5);
-}
-#footer-wrap,
-#footer-wrap a {
-  color: #111;
-  -webkit-transition: unset;
-  -moz-transition: unset;
-  -o-transition: unset;
-  -ms-transition: unset;
-  transition: unset;
-}
-[data-theme='dark'] #footer-wrap,
-[data-theme='dark'] #footer-wrap a {
-  color: var(--light-grey);
+
+.icon:hover img {
+  transform: scale(1.1); /* 鼠标悬停时图片稍微放大 */
 }
