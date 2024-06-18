@@ -19,7 +19,7 @@
 }
 /*侧边卡片的透明度 */
 :root {
---card-bg: rgba(255, 255, 255, .7);
+--card-bg: rgba(189, 250, 251, 0.7);
 }
 /* 页脚透明 */
 #footer {
@@ -27,8 +27,8 @@
 background: rgba(255,255,255, .0);
 }
 .icon img {
-  width: 32px;
-  height: 32px;
+  width: 100px;
+  height: 100px;
   transition: transform 0.3s;
 }
 
