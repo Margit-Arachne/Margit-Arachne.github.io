@@ -38,7 +38,7 @@
 }
 @media screen and (max-width: 768px) {
   .top-img {
-    height: 230px;
+    height: 100px;
     margin: -36px -14px 36px;
   }
 }
