@@ -1,0 +1,348 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>神经网络与深度学习 第一章 | Margit-Arachneのblog</title><meta name="author" content="Margit Arachne"><meta name="copyright" content="Margit Arachne"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="深入浅出神经网络与深度学习 第一章：用神经网络识别手写数字神经网络的基本构成 神经元（Neurons）：  神经网络的基本单位是神经元，也称为节点或单元。每个神经元接收多个输入信号，并通过一个激活函数生成输出信号。  感知机(我称之为单细胞生物),条件$\sum_{j}{w_j}{x_j} &#x3D; \omega\cdot x$其规则可以写为:      输出 &#x3D;          \begin{cas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="神经网络与深度学习 第一章">
+<meta property="og:url" content="https://margit.asia/2024/07/03/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E7%AB%A0/index.html">
+<meta property="og:site_name" content="Margit-Arachneのblog">
+<meta property="og:description" content="深入浅出神经网络与深度学习 第一章：用神经网络识别手写数字神经网络的基本构成 神经元（Neurons）：  神经网络的基本单位是神经元，也称为节点或单元。每个神经元接收多个输入信号，并通过一个激活函数生成输出信号。  感知机(我称之为单细胞生物),条件$\sum_{j}{w_j}{x_j} &#x3D; \omega\cdot x$其规则可以写为:      输出 &#x3D;          \begin{cas">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Margit-Arachne/Blog-pic/main/img/202407012022789.jpg">
+<meta property="article:published_time" content="2024-07-03T12:33:41.271Z">
+<meta property="article:modified_time" content="2024-07-03T12:49:26.388Z">
+<meta property="article:author" content="Margit Arachne">
+<meta property="article:tag" content="Typora">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Margit-Arachne/Blog-pic/main/img/202407012022789.jpg"><link rel="shortcut icon" href="/img/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20231205220510.jpg"><link rel="canonical" href="https://margit.asia/2024/07/03/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E7%AB%A0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '神经网络与深度学习 第一章',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-03 20:49:26'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/modify.css"><meta name="generator" content="Hexo 7.2.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="scarecrow"><div class="scarecrow__hat"><div class="scarecrow__ribbon"></div></div><div class="scarecrow__head"><div class="scarecrow__eye"></div><div class="scarecrow__eye"></div><div class="scarecrow__mouth"></div><div class="scarecrow__pipe"></div></div><div class="scarecrow__body"><div class="scarecrow__glove scarecrow__glove--l"></div><div class="scarecrow__sleeve scarecrow__sleeve--l"></div><div class="scarecrow__bow"></div><div class="scarecrow__shirt"></div><div class="scarecrow__coat"></div><div class="scarecrow__waistcoat"></div><div class="scarecrow__sleeve scarecrow__sleeve--r"></div><div class="scarecrow__glove scarecrow__glove--r"></div><div class="scarecrow__coattails"></div><div class="scarecrow__pants"></div></div><div class="scarecrow__arms"></div><div class="scarecrow__leg">  </div></div></div><script async="async">(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', () => { preloader.endLoading() })
+  
+  setTimeout(function() { preloader.endLoading(); }, 5000)
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/Margit-Arachne/Blog-pic/main/img/202407012022789.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/Margit-Arachne/Blog-pic/main/img/202407012020265.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Margit-Arachneのblog"><span class="site-name">Margit-Arachneのblog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">神经网络与深度学习 第一章</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-07-03T12:33:41.271Z" title="发表于 2024-07-03 20:33:41">2024-07-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-03T12:49:26.388Z" title="更新于 2024-07-03 20:49:26">2024-07-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">神经网络与深度学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="神经网络与深度学习 第一章"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="深入浅出神经网络与深度学习-第一章：用神经网络识别手写数字"><a href="#深入浅出神经网络与深度学习-第一章：用神经网络识别手写数字" class="headerlink" title="深入浅出神经网络与深度学习 第一章：用神经网络识别手写数字"></a>深入浅出神经网络与深度学习 第一章：用神经网络识别手写数字</h3><h4 id="神经网络的基本构成"><a href="#神经网络的基本构成" class="headerlink" title="神经网络的基本构成"></a>神经网络的基本构成</h4><ol>
+<li><p>神经元（Neurons）：</p>
+<ul>
+<li><p>神经网络的基本单位是神经元，也称为节点或单元。每个神经元接收多个输入信号，并通过一个激活函数生成输出信号。</p>
+</li>
+<li><p>感知机(我称之为单细胞生物),条件$\sum_{j}{w_j}{x_j} = \omega\cdot x$其规则可以写为:</p>
+<script type="math/tex; mode=display">
+    输出 = 
+        \begin{cases} 
+            1,若\omega\cdot x+b\leq0 \\
+            0,若\omega\cdot x+b>0 \\
+        \end{cases}</script></li>
+<li><p>本章程序使用的是sigmoid神经元.sigmoid神经元对每个输入有权重$w_1,w_2,\cdots$和一个总的偏置b,但是输出不是0或1,而是$\sigma(\omega\cdot x+b)$,其中$\sigma$被称之为sigmoid函数,定义如下:</p>
+<p>​                $\large \sigma(x) = \frac{1}{1+e^{-z}} = \frac{1}{1+exp(-\sum_j{w_j}{x_j}-b)}$</p>
+<p><img src="https://raw.githubusercontent.com/Margit-Arachne/Blog-pic/main/img/202407032005633.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>层（Layers）：</p>
+<ul>
+<li>神经网络由多个层组成。通常包括输入层、隐藏层和输出层。输入层接收外部数据，隐藏层进行数据处理和特征提取，输出层生成最终结果。</li>
+</ul>
+</li>
+<li><p>权重（Weights）和偏置（Biases）：</p>
+<ul>
+<li>每个连接（即神经元之间的连接）都有一个权重 w，表示该连接的强度。每个神经元还有一个偏置 b，用于调节激活函数的输出。</li>
+</ul>
+</li>
+</ol>
+<h4 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h4><p>激活函数是将输入信号转换为输出信号的函数。常见的激活函数有：</p>
+<ul>
+<li>Sigmoid函数</li>
+<li>ReLU（Rectified Linear Unit）</li>
+<li>Tanh（双曲正切函数）</li>
+</ul>
+<h4 id="神经网络的工作原理"><a href="#神经网络的工作原理" class="headerlink" title="神经网络的工作原理"></a>神经网络的工作原理</h4><ol>
+<li><p>前向传播（Forward Propagation）：</p>
+<ul>
+<li>输入数据通过输入层传递到隐藏层，经过加权求和和激活函数处理，再传递到输出层生成最终结果。</li>
+</ul>
+</li>
+<li><p>损失函数(代价函数或目标函数)（Loss Function）：</p>
+<ul>
+<li><p>用于衡量神经网络输出结果与实际结果之间的差异。常用的损失函数有均方误差（MSE）和交叉熵（Cross-Entropy）。</p>
+</li>
+<li><p>本章使用的函数为:</p>
+<p>​            $C(w,b)\equiv\frac{1}{2n}\sum_x{||y(x)-a||^2}$</p>
+</li>
+</ul>
+</li>
+<li><p>反向传播（Backpropagation）：</p>
+<ul>
+<li>通过反向传播算法计算损失函数相对于每个权重的梯度，从而更新权重以减少损失。反向传播结合梯度下降算法来优化网络。</li>
+</ul>
+</li>
+</ol>
+<h4 id="梯度下降算法"><a href="#梯度下降算法" class="headerlink" title="梯度下降算法"></a>梯度下降算法</h4><p>梯度下降是一种优化算法，通过计算损失函数的梯度，沿着梯度的反方向更新权重，使损失函数值逐渐减小。常见的梯度下降算法有：</p>
+<ul>
+<li>批量梯度下降（Batch Gradient Descent）</li>
+<li>随机梯度下降（Stochastic Gradient Descent, SGD）</li>
+<li>小批量梯度下降（Mini-Batch Gradient Descent）</li>
+</ul>
+<h4 id="训练神经网络"><a href="#训练神经网络" class="headerlink" title="训练神经网络"></a>训练神经网络</h4><ol>
+<li>初始化：<ul>
+<li>随机初始化神经网络的权重和偏置。</li>
+</ul>
+</li>
+<li>前向传播：<ul>
+<li>将输入数据通过神经网络进行前向传播，计算输出结果。</li>
+</ul>
+</li>
+<li>计算损失：<ul>
+<li>使用损失函数计算输出结果与实际结果之间的差异。</li>
+</ul>
+</li>
+<li>反向传播和权重更新：<ul>
+<li>通过反向传播计算梯度，并使用梯度下降算法更新权重。</li>
+</ul>
+</li>
+<li>迭代训练：<ul>
+<li>重复前向传播、计算损失、反向传播和权重更新过程，直到损失函数值收敛或达到设定的训练次数。</li>
+</ul>
+</li>
+</ol>
+<h4 id="手写数字识别示例"><a href="#手写数字识别示例" class="headerlink" title="手写数字识别示例"></a>手写数字识别示例</h4><p>第一章以手写数字识别为例，通过MNIST数据集训练一个简单的神经网络，演示了神经网络的基本构建和训练过程。可以使用Git克隆代码仓库:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/Margit-Arachne/My-little-AI.git</span><br></pre></td></tr></table></figure>
+<p>该示例包括以下步骤：</p>
+<ol>
+<li><p>加载MNIST数据集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="comment">#此处为mnist_loader.py等文件具体位置</span></span><br><span class="line">sys.path.append(<span class="string">r&#x27;D:\git-ai\neural-networks-and-deep-learning\src&#x27;</span>)</span><br><span class="line"><span class="keyword">import</span> mnist_loader</span><br><span class="line">training_data, validation_data, test_data = mnist_loader.load_data_wrapper()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化神经网络</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> network</span><br><span class="line"><span class="comment">#[]中数字依次代表:输入神经元数, 隐藏神经元数, 输出神经元数</span></span><br><span class="line">net = network.Network([<span class="number">784</span>, <span class="number">30</span>, <span class="number">10</span>])</span><br><span class="line"><span class="comment">#()中数字依次代表:学习轮数, 小批量大小, 学习率</span></span><br><span class="line">net.SGD(training_data, <span class="number">30</span>, <span class="number">10</span>, <span class="number">3.0</span>, test_data=test_data)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用前向传播计算输出结果</p>
+</li>
+<li><p>计算损失并进行反向传播</p>
+</li>
+<li><p>使用梯度下降算法更新权重</p>
+</li>
+<li><p>评估神经网络的性能</p>
+</li>
+</ol>
+<p>本章使用代码为mnist_loader.py 和 network.py</p>
+<p>当没有隐藏层,只有输入输出层,最佳学习结果的学习率大概为0.0015左右,结果:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Epoch 0: 1135 / 10000</span><br><span class="line">Epoch 1: 1135 / 10000</span><br><span class="line">Epoch 2: 1135 / 10000</span><br><span class="line">Epoch 3: 1135 / 10000</span><br><span class="line">Epoch 4: 1135 / 10000</span><br><span class="line">Epoch 5: 1135 / 10000</span><br><span class="line">Epoch 6: 1135 / 10000</span><br><span class="line">Epoch 7: 1135 / 10000</span><br><span class="line">Epoch 8: 1135 / 10000</span><br><span class="line">Epoch 9: 1135 / 10000</span><br><span class="line">Epoch 10: 1135 / 10000</span><br><span class="line">Epoch 11: 1135 / 10000</span><br><span class="line">Epoch 12: 1135 / 10000</span><br><span class="line">Epoch 13: 1135 / 10000</span><br><span class="line">Epoch 14: 1135 / 10000</span><br><span class="line">Epoch 15: 1135 / 10000</span><br><span class="line">Epoch 16: 1135 / 10000</span><br><span class="line">Epoch 17: 1135 / 10000</span><br><span class="line">Epoch 18: 1135 / 10000</span><br><span class="line">Epoch 19: 1135 / 10000</span><br><span class="line">Epoch 20: 1135 / 10000</span><br><span class="line">Epoch 21: 1135 / 10000</span><br><span class="line">Epoch 22: 1135 / 10000</span><br><span class="line">Epoch 23: 1135 / 10000</span><br><span class="line">Epoch 24: 1135 / 10000</span><br><span class="line">Epoch 25: 1135 / 10000</span><br><span class="line">Epoch 26: 1135 / 10000</span><br><span class="line">Epoch 27: 1135 / 10000</span><br><span class="line">Epoch 28: 1135 / 10000</span><br><span class="line">Epoch 29: 1135 / 10000</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://margit.asia">Margit Arachne</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://margit.asia/2024/07/03/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E7%AB%A0/">https://margit.asia/2024/07/03/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E7%AB%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://margit.asia" target="_blank">Margit-Arachneのblog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Typora/">Typora</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/Margit-Arachne/Blog-pic/main/img/202407012022789.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/06/18/Typora%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E4%BB%A3%E7%A0%81/" title="Typora数学公式代码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Typora数学公式代码</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/06/18/Typora%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E4%BB%A3%E7%A0%81/" title="Typora数学公式代码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-18</div><div class="title">Typora数学公式代码</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/Margit-Arachne/Blog-pic/main/img/202407012022789.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Margit Arachne</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%9A%E7%94%A8%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%AF%86%E5%88%AB%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97"><span class="toc-number">1.</span> <span class="toc-text">深入浅出神经网络与深度学习 第一章：用神经网络识别手写数字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90"><span class="toc-number">1.1.</span> <span class="toc-text">神经网络的基本构成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">激活函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">神经网络的工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%AE%97%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">梯度下降算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">1.5.</span> <span class="toc-text">训练神经网络</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.6.</span> <span class="toc-text">手写数字识别示例</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/03/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E7%AB%A0/" title="神经网络与深度学习 第一章">神经网络与深度学习 第一章</a><time datetime="2024-07-03T12:33:41.271Z" title="发表于 2024-07-03 20:33:41">2024-07-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/18/Typora%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E4%BB%A3%E7%A0%81/" title="Typora数学公式代码">Typora数学公式代码</a><time datetime="2024-06-18T14:10:51.393Z" title="发表于 2024-06-18 22:10:51">2024-06-18</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By Margit Arachne</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Z6Uz1HFjuNTjkQSjBcDYVvp6-gzGzoHsz',
+      appKey: 'EACewoBcJv2sssiThmf7BsnL',
+      avatar: 'monsterid',
+      serverURLs: 'https://z6uz1hfj.lc-cn-n1-shared.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script src="/js/snowflake.js"></script><link rel="stylesheet" href="/live2d/css/live2d.css" /><div id="landlord"> <div class="message" style="opacity:0.5"></div> <canvas id="live2d" width="280" height="250" class="live2d"></canvas> <div class="hide-button"><font color="#FFFFFF">隐藏</font></div></div><script type="text/javascript"> var message_Path = ”/live2d/“</script><script type="text/javascript"> var home_Path = "https://margit.asia/" </script><script type="text/javascript" src="/live2d/js/live2d.js"></script><script type="text/javascript" src="/live2d/js/message.js"></script><script type="text/javascript"> loadlive2d("live2d", "/live2d/model/tia/model.json"); </script><script type="text/javascript" src="/live2d/js/index.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

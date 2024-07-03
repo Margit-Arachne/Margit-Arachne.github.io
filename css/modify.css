@@ -1,11 +1,11 @@
 #web_bg {
   /* 背景图像的地址（url括号里）  */
-  background: url(https://img.margit.asia/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240617104721.jpg);
+  background: url(https://raw.githubusercontent.com/Margit-Arachne/Blog-pic/main/img/202407012021814.jpg);
   /* 背景图像不重复 */
   background-repeat: no-repeat;
   /* 背景图像大小 */
   background-size: cover;
-  background-position: center top -20% !important; 
+  background-position: center top 1%; 
   height: 100vh;
 }
 /* 文章页背景 */
